@@ -10,16 +10,6 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * SuperAdminDashboardController
- * URL: /superadmin/dashboard?tab=overview|users|admins|dealers|properties|bookings
- *
- * GET  → load data via DAO → setAttribute → forward to /pages/superadmin/dashboard.jsp
- * POST → action via DAO   → setFlash     → sendRedirect  (PRG pattern)
- *
- * Week 3 Tutorial: @WebServlet annotation, asyncSupported, urlPatterns
- * Week 4: RequestDispatcher.forward() for GET, sendRedirect for POST
- */
 @WebServlet(asyncSupported = true, urlPatterns = {"/superadmin/dashboard"})
 public class SuperAdminDashboardController extends HttpServlet {
 
