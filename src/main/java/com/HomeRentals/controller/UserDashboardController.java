@@ -7,12 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet({"/admin", "/admin/dashboard"})
-public class AdminDashboardController extends HttpServlet {
+@WebServlet({"/", "/dashboard", "/user", "/user/dashboard"})
+public class UserDashboardController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        request.getRequestDispatcher("/pages/admin/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/user/dashboard.jsp").forward(request, response);
     }
 }
