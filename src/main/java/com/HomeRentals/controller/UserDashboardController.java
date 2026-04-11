@@ -9,7 +9,6 @@ import java.io.IOException;
 
 @WebServlet({"/", "/dashboard", "/user", "/user/dashboard"})
 public class UserDashboardController extends HttpServlet {
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
