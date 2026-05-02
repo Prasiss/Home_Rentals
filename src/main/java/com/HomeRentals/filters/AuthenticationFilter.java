@@ -14,18 +14,14 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter({"/admin/*", "/dealer/*", "/userdashboard/*", "/dashboard/*",
-            "/bookings/*", "/wishlist/*", "/profile/*"})
+@WebFilter({"/admin/*", "/dashboard", "/explore", "/bookings", 
+            "/wishlist", "/profile", "/become-dealer"})
 public class AuthenticationFilter extends HttpFilter implements Filter {
 
     private static final long serialVersionUID = 1L;
 
-    public AuthenticationFilter() {
-        super();
-    }
-
-    public void destroy() {
-    }
+    public AuthenticationFilter() { super(); }
+    public void destroy() {}
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -35,34 +31,38 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
-        // allow all these without checking
-        if (path.startsWith("/css") || path.startsWith("/js") ||
-            path.startsWith("/image") || path.startsWith("/images") ||
-            path.startsWith("/login") || path.startsWith("/register") ||
-            path.startsWith("/pages") || path.equals("/") ||
-            path.endsWith(".css") || path.endsWith(".js") || 
-            path.endsWith(".png") || path.endsWith(".jpg")) {
+        // ALLOW everything without checking - prevent loops
+        if (path.startsWith("/login") || 
+            path.startsWith("/register") ||
+            path.startsWith("/css") || 
+            path.startsWith("/js") ||
+            path.startsWith("/image") || 
+            path.startsWith("/pages") ||
+            path.endsWith(".css") || 
+            path.endsWith(".js") ||
+            path.endsWith(".png") || 
+            path.endsWith(".jpg") ||
+            path.endsWith(".jsp")) {
             chain.doFilter(request, response);
             return;
         }
 
-        // check if user logged in
+        // check if logged in
         HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
+        if (session == null || session.getAttribute("user_id") == null) {
             res.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-        // role check
-        String role = (String) session.getAttribute("role");
-        if (path.startsWith("/admin") && !"ADMIN".equals(role)) {
-            res.sendRedirect(req.getContextPath() + "/login");
+        // admin check
+        String role = (String) session.getAttribute("role_name");
+        if (path.startsWith("/admin") && !"ADMIN".equalsIgnoreCase(role)) {
+            res.sendRedirect(req.getContextPath() + "/dashboard");
             return;
         }
 
         chain.doFilter(request, response);
     }
 
-    public void init(FilterConfig fConfig) throws ServletException {
-    }
+    public void init(FilterConfig fConfig) throws ServletException {}
 }

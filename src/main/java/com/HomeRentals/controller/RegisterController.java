@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import com.HomeRentals.service.RegisterService;
+import com.HomeRentals.dao.HomeRentalsDAO;
 import com.HomeRentals.utils.ValidationUtil;
 
 /**
@@ -37,14 +37,11 @@ public class RegisterController extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmpassword");
 
-        RegisterService registerService = new RegisterService();
-
         if (!ValidationUtil.isValidString(fullName) ||
                 !ValidationUtil.isValidString(username) ||
                 !ValidationUtil.isValidString(email) ||
                 !ValidationUtil.isValidString(number) ||
                 !ValidationUtil.isValidString(password)) {
-
             request.setAttribute("error", "All fields are required");
             request.getRequestDispatcher("/pages/register.jsp").forward(request, response);
             return;
@@ -57,7 +54,8 @@ public class RegisterController extends HttpServlet {
         }
 
         try {
-            boolean success = registerService.addUser(fullName, username, email, number, password);
+            HomeRentalsDAO dao = new HomeRentalsDAO();
+            boolean success = dao.insertUser(fullName, username, email, number, password);
 
             if (success) {
                 response.sendRedirect(request.getContextPath() + "/login");
