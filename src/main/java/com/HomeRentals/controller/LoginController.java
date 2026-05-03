@@ -17,13 +17,8 @@ import com.HomeRentals.utils.ValidationUtil;
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public LoginController() {
-        super();
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // just show login page - no redirect
         request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
     }
 
@@ -31,10 +26,10 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         try {
             String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            String password  = request.getParameter("password");
 
             if (!ValidationUtil.isValidString(username) || !ValidationUtil.isValidString(password)) {
-                request.setAttribute("error", "Username and Password are required");
+                request.setAttribute("error", "Username and password are required.");
                 request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
                 return;
             }
@@ -43,21 +38,47 @@ public class LoginController extends HttpServlet {
             User user = dao.getUserByUsername(username);
 
             if (user != null && password.equals(user.getPassword())) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user_id", user.getUserId());
-                session.setAttribute("user_name", user.getFullName());
-                session.setAttribute("user_email", user.getEmail());
-                session.setAttribute("role_name", user.getRoleName());
 
-                if ("ADMIN".equalsIgnoreCase(user.getRoleName())) {
+                String status = user.getStatus();
+
+                // Block PENDING users — registered but not yet approved by admin
+                if ("PENDING".equalsIgnoreCase(status)) {
+                    request.setAttribute("error",
+                        "Your account is pending admin approval. You will be able to log in once approved.");
+                    request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
+                    return;
+                }
+
+                // Block INACTIVE / deleted users
+                if (!"ACTIVE".equalsIgnoreCase(status)) {
+                    request.setAttribute("error",
+                        "Your account has been deactivated. Please contact support.");
+                    request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
+                    return;
+                }
+
+                // All good — create session
+                HttpSession session = request.getSession();
+                session.setAttribute("user_id",    user.getUserId());
+                session.setAttribute("user_name",  user.getFullName());
+                session.setAttribute("user_email", user.getEmail());
+                session.setAttribute("role_name",  user.getRoleName());
+                session.setAttribute("role_id",    user.getRoleId());
+
+                String role = user.getRoleName();
+                if ("ADMIN".equalsIgnoreCase(role)) {
                     response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+                } else if ("DEALER".equalsIgnoreCase(role)) {
+                    response.sendRedirect(request.getContextPath() + "/dealer/dashboard");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/dashboard");
                 }
+
             } else {
-                request.setAttribute("error", "Invalid username or password");
+                request.setAttribute("error", "Invalid username or password.");
                 request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Server error: " + e.getMessage());

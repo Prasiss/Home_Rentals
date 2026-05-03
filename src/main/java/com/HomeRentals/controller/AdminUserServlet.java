@@ -35,8 +35,6 @@ public class AdminUserServlet extends HttpServlet {
             request.setAttribute("pageTitle", "Manage Users");
             request.getRequestDispatcher("/WEB-INF/views/admin/users.jsp").forward(request, response);
         } catch (Exception e) {
-            // Rethrow so the error is visible in browser during development.
-            // Replace with a redirect once the real cause is fixed.
             throw new ServletException("AdminUserServlet.doGet failed: " + e.getMessage(), e);
         }
     }

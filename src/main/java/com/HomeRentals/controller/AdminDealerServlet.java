@@ -37,8 +37,6 @@ public class AdminDealerServlet extends HttpServlet {
             request.setAttribute("pageTitle", "Manage Dealers");
             request.getRequestDispatcher("/WEB-INF/views/admin/dealers.jsp").forward(request, response);
         } catch (Exception e) {
-            // Rethrow so the error is visible in browser during development.
-            // Replace with a redirect once the real cause is fixed.
             throw new ServletException("AdminDealerServlet.doGet failed: " + e.getMessage(), e);
         }
     }
