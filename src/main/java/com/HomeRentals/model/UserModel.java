@@ -1,64 +1,45 @@
 package com.HomeRentals.model;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+public class UserModel {
 
-public class UserModel implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private int userNo;
+    private int    userId;
     private String fullName;
-    private String username;
+    private String userName;       // DB col: username
     private String email;
+    private String number;         // DB col: phone_number
     private String password;
-    private String role;
-    private String phone;
-    private String profileImage;
-    private String address;
-    private String status;
-    private Timestamp createdAt;
-    private int totalBookings;
-    private int propertyCount;
+    private String role;           // DB col: role  — 'ADMIN' | 'DEALER' | 'USER'
+    private int    isApproved;     // DB col: is_approved — 0 or 1
 
     public UserModel() {}
 
-    public int getUserNo() { return userNo; }
-    public void setUserNo(int userNo) { this.userNo = userNo; }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
 
     public String getFullName() { return fullName; }
     public void setFullName(String fullName) { this.fullName = fullName; }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public String getUserName() { return userName; }
+    public void setUserName(String userName) { this.userName = userName; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
+    /** Maps to DB column: phone_number */
+    public String getNumber() { return number; }
+    public void setNumber(String number) { this.number = number; }
+
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
+    /** Role string: 'ADMIN', 'DEALER', or 'USER' */
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    /** Maps to DB column: is_approved (1 = approved, 0 = pending/inactive) */
+    public int getIsApproved() { return isApproved; }
+    public void setIsApproved(int isApproved) { this.isApproved = isApproved; }
 
-    public String getProfileImage() { return profileImage; }
-    public void setProfileImage(String profileImage) { this.profileImage = profileImage; }
-
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-
-    public Timestamp getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
-
-    public int getTotalBookings() { return totalBookings; }
-    public void setTotalBookings(int totalBookings) { this.totalBookings = totalBookings; }
-
-    public int getPropertyCount() { return propertyCount; }
-    public void setPropertyCount(int propertyCount) { this.propertyCount = propertyCount; }
+    /** Convenience: returns true if is_approved = 1 */
+    public boolean isApproved() { return isApproved == 1; }
 }

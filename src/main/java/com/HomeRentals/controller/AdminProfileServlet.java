@@ -13,10 +13,14 @@ import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 import com.HomeRentals.dao.HomeRentalsDAO;
-import com.HomeRentals.model.User;
+import com.HomeRentals.model.UserModel;
 
-@WebServlet("/admin/profile")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 10 * 1024 * 1024)
+@WebServlet(asyncSupported = true, urlPatterns ={"/admin/profile"})
+@MultipartConfig(
+		fileSizeThreshold = 1024 * 1024, 
+		maxFileSize = 5 * 1024 * 1024, 
+		maxRequestSize = 10 * 1024 * 1024
+)
 public class AdminProfileServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private HomeRentalsDAO dao;
@@ -25,17 +29,17 @@ public class AdminProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("user_id") == null) {
+        if (session == null || session.getAttribute("userId") == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
         try {
-            int userId = (int) session.getAttribute("user_id");
-            User profile = dao.getAdminProfile(userId);
+            int userId = (int) session.getAttribute("userId");
+            UserModel profile = dao.getUserById(userId);
             request.setAttribute("adminProfile", profile);
             request.setAttribute("activePage", "profile");
             request.setAttribute("pageTitle", "Edit Profile");
-            request.getRequestDispatcher("/WEB-INF/views/admin/profile.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/admin/profile.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/admin/dashboard");
@@ -46,7 +50,7 @@ public class AdminProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         String action = request.getParameter("action");
-        int userId = (int) session.getAttribute("user_id");
+        int userId = (int) session.getAttribute("userId");
 
         if ("updateProfile".equals(action)) {
             String fullName = trim(request.getParameter("fullName"));
@@ -73,7 +77,7 @@ public class AdminProfileServlet extends HttpServlet {
 
             try {
                 String image = handleImageUpload(request);
-                dao.updateAdminProfile(userId, fullName, email, phone, address, image);
+                dao.updateAdminProfile(userId, fullName, email, phone);
                 forwardToProfile(request, response, userId, "Profile updated successfully.", null);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -110,20 +114,20 @@ public class AdminProfileServlet extends HttpServlet {
     private void forwardToProfile(HttpServletRequest req, HttpServletResponse res,
             int userId, String success, String error) throws ServletException, IOException {
         try {
-            User profile = dao.getAdminProfile(userId);
+            UserModel profile = dao.getUserById(userId);
             req.setAttribute("adminProfile", profile);
         } catch (Exception ignored) {}
         req.setAttribute("activePage", "profile");
         req.setAttribute("pageTitle", "Edit Profile");
         if (success != null) req.setAttribute("successMsg", success);
         if (error   != null) req.setAttribute("errorMsg",   error);
-        req.getRequestDispatcher("/WEB-INF/views/admin/profile.jsp").forward(req, res);
+        req.getRequestDispatcher("/WEB-INF/pages/admin/profile.jsp").forward(req, res);
     }
 
     private String handleImageUpload(HttpServletRequest request) throws Exception {
         Part filePart = request.getPart("profileImage");
         if (filePart == null || filePart.getSize() == 0) return null; // null = keep existing
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads/profiles";
+        String uploadPath = getServletContext().getRealPath("") + File.separator + "image/profiles";
         new File(uploadPath).mkdirs();
         String name = UUID.randomUUID().toString() + ".jpg";
         try (InputStream input = filePart.getInputStream()) {
