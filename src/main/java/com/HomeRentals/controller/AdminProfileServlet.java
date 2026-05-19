@@ -1,4 +1,4 @@
-package com.HomeRentals.controller;
+package com.HomeRental.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -12,19 +12,23 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
-import com.HomeRentals.dao.HomeRentalsDAO;
-import com.HomeRentals.model.UserModel;
+import com.HomeRental.dao.HomeRentalDAO;
+import com.HomeRental.model.UserModel;
 
-@WebServlet(asyncSupported = true, urlPatterns ={"/admin/profile"})
+@WebServlet(asyncSupported = true, urlPatterns = {"/admin/profile"})
 @MultipartConfig(
-		fileSizeThreshold = 1024 * 1024, 
-		maxFileSize = 5 * 1024 * 1024, 
-		maxRequestSize = 10 * 1024 * 1024
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize       = 5  * 1024 * 1024,
+        maxRequestSize    = 10 * 1024 * 1024
 )
 public class AdminProfileServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    private HomeRentalsDAO dao;
-    public void init() throws ServletException { dao = new HomeRentalsDAO(); }
+    private HomeRentalDAO dao;
+
+    public void init() throws ServletException {
+        dao = new HomeRentalDAO();
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,9 +60,7 @@ public class AdminProfileServlet extends HttpServlet {
             String fullName = trim(request.getParameter("fullName"));
             String email    = trim(request.getParameter("email"));
             String phone    = trim(request.getParameter("phone"));
-            String address  = trim(request.getParameter("address"));
 
-            // ── Server-side validation (replaces required + type="email") ──────
             String error = null;
             if (fullName.isEmpty()) {
                 error = "Full name is required.";
@@ -77,7 +79,7 @@ public class AdminProfileServlet extends HttpServlet {
 
             try {
                 String image = handleImageUpload(request);
-                dao.updateAdminProfile(userId, fullName, email, phone);
+                dao.updateAdminProfile(userId, fullName, email, phone, image);
                 forwardToProfile(request, response, userId, "Profile updated successfully.", null);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -87,8 +89,9 @@ public class AdminProfileServlet extends HttpServlet {
         } else if ("changePassword".equals(action)) {
             String newPassword     = request.getParameter("newPassword");
             String confirmPassword = request.getParameter("confirmPassword");
+
             String error = null;
-            if (newPassword == null || newPassword.isEmpty()) {
+            if (newPassword == null || newPassword.trim().isEmpty()) {
                 error = "New password is required.";
             } else if (newPassword.length() < 6) {
                 error = "Password must be at least 6 characters.";
@@ -112,7 +115,8 @@ public class AdminProfileServlet extends HttpServlet {
     }
 
     private void forwardToProfile(HttpServletRequest req, HttpServletResponse res,
-            int userId, String success, String error) throws ServletException, IOException {
+                                  int userId, String success, String error)
+            throws ServletException, IOException {
         try {
             UserModel profile = dao.getUserById(userId);
             req.setAttribute("adminProfile", profile);
@@ -126,10 +130,23 @@ public class AdminProfileServlet extends HttpServlet {
 
     private String handleImageUpload(HttpServletRequest request) throws Exception {
         Part filePart = request.getPart("profileImage");
-        if (filePart == null || filePart.getSize() == 0) return null; // null = keep existing
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "image/profiles";
+        if (filePart == null || filePart.getSize() == 0) return null;
+
+
+        String uploadPath = System.getProperty("user.home")
+                + File.separator + "homerental_images"
+                + File.separator + "profiles";
         new File(uploadPath).mkdirs();
-        String name = UUID.randomUUID().toString() + ".jpg";
+
+        String contentType = filePart.getContentType();
+        String ext = ".jpg";
+        if (contentType != null) {
+            if (contentType.contains("png"))  ext = ".png";
+            else if (contentType.contains("gif"))  ext = ".gif";
+            else if (contentType.contains("webp")) ext = ".webp";
+        }
+
+        String name = UUID.randomUUID().toString() + ext;
         try (InputStream input = filePart.getInputStream()) {
             Files.copy(input, new File(uploadPath, name).toPath(), StandardCopyOption.REPLACE_EXISTING);
         }

@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Manage Users - HomeRentals</title>
+    <title>Manage Users - HomeRental</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/admin.css">
 </head>
 <body>

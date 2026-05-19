@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.islington</groupId>
-  <artifactId>HomeRentals</artifactId>
+  <artifactId>HomeRental</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>HomeRentals Maven Webapp</name>
+  <name>HomeRental Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -42,7 +42,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>HomeRentals</finalName>
+    <finalName>HomeRental</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

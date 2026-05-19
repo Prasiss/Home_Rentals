@@ -1,4 +1,4 @@
-package com.HomeRentals.controller;
+package com.HomeRental.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,9 +10,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import com.HomeRentals.dao.HomeRentalsDAO;
-import com.HomeRentals.model.UserModel;
-import com.HomeRentals.model.PropertyModel;
+import com.HomeRental.dao.HomeRentalDAO;
+import com.HomeRental.model.UserModel;
+import com.HomeRental.model.PropertyModel;
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/admindashboard" })
 public class AdminController extends HttpServlet {
@@ -24,8 +24,6 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-
-        // Session key is "userId" (set by LoginController via SessionUtil)
         if (session == null || session.getAttribute("userId") == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
@@ -37,7 +35,7 @@ public class AdminController extends HttpServlet {
             return;
         }
 
-        HomeRentalsDAO dao = new HomeRentalsDAO();
+        HomeRentalDAO dao = new HomeRentalDAO();
         try {
             long   totalRevenue      = dao.getTotalRevenue();
             int    totalUsers        = dao.getTotalUsersCount();

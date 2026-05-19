@@ -1,4 +1,4 @@
-package com.HomeRentals.controller;
+package com.HomeRental.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,15 +10,15 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import com.HomeRentals.dao.HomeRentalsDAO;
-import com.HomeRentals.model.UserModel;
+import com.HomeRental.dao.HomeRentalDAO;
+import com.HomeRental.model.UserModel;
 
 @WebServlet(asyncSupported = true, urlPatterns ={"/admin/dealers"})
 public class AdminDealerController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private HomeRentalsDAO dao;
+    private HomeRentalDAO dao;
 
-    public void init() throws ServletException { dao = new HomeRentalsDAO(); }
+    public void init() throws ServletException { dao = new HomeRentalDAO(); }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -62,7 +62,7 @@ public class AdminDealerController extends HttpServlet {
             if ("approveDealer".equals(action)) {
                 dao.approveDealer(userId);                  // sets status = ACTIVE for role_id = 2
             } else if ("deleteDealer".equals(action)) {
-                dao.deactivateDealer(userId);               // was softDeleteDealer() — use deactivateDealer()
+                dao.deactivateDealer(userId);               // was softDeleteDealer() ï¿½ use deactivateDealer()
             } else if ("approveDealerRequest".equals(action)) {
                 dao.approveDealerRequest(userId);           // sets role_id = 2, dealer_request = APPROVED
             } else if ("rejectDealerRequest".equals(action)) {

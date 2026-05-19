@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - HomeRentals</title>
+    <title>Dashboard - HomeRental</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/admin.css">
 </head>
 <body>

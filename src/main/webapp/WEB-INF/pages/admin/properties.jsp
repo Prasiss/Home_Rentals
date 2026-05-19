@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Approvals - HomeRentals</title>
+    <title>Property Approvals - HomeRental</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/admin.css">
 </head>
 <body>

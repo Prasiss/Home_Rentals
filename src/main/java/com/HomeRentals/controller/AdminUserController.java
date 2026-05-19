@@ -1,4 +1,4 @@
-package com.HomeRentals.controller;
+package com.HomeRental.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,15 +10,15 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import com.HomeRentals.dao.HomeRentalsDAO;
-import com.HomeRentals.model.UserModel;
+import com.HomeRental.dao.HomeRentalDAO;
+import com.HomeRental.model.UserModel;
 
 @WebServlet(asyncSupported = true, urlPatterns ={"/admin/users"})
 public class AdminUserController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private HomeRentalsDAO dao;
+    private HomeRentalDAO dao;
 
-    public void init() throws ServletException { dao = new HomeRentalsDAO(); }
+    public void init() throws ServletException { dao = new HomeRentalDAO(); }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,7 +60,7 @@ public class AdminUserController extends HttpServlet {
             if ("approveUser".equals(action)) {
                 dao.approveUser(userId);          // sets status = ACTIVE
             } else if ("deleteUser".equals(action)) {
-                dao.deleteUser(userId);            // soft delete — sets status = INACTIVE
+                dao.deleteUser(userId);            // soft delete ï¿½ sets status = INACTIVE
             }
 
             response.sendRedirect(request.getContextPath() + "/admin/users");

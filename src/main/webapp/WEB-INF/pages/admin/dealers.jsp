@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Manage Dealers - HomeRentals</title>
+    <title>Manage Dealers - HomeRental</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/admin.css">
     <style>
         .section-divider { display:flex; align-items:center; gap:12px; margin:32px 0 16px; color:#6c757d; font-size:13px; text-transform:uppercase; letter-spacing:0.05em; }

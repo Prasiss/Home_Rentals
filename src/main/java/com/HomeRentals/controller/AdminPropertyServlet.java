@@ -1,4 +1,4 @@
-package com.HomeRentals.controller;
+package com.HomeRental.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,15 +10,15 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import com.HomeRentals.dao.HomeRentalsDAO;
-import com.HomeRentals.model.PropertyModel;
+import com.HomeRental.dao.HomeRentalDAO;
+import com.HomeRental.model.PropertyModel;
 
 @WebServlet("/admin/properties")
 public class AdminPropertyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private HomeRentalsDAO dao;
+    private HomeRentalDAO dao;
 
-    public void init() throws ServletException { dao = new HomeRentalsDAO(); }
+    public void init() throws ServletException { dao = new HomeRentalDAO(); }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,8 +67,6 @@ public class AdminPropertyServlet extends HttpServlet {
         try {
             int propertyId = Integer.parseInt(request.getParameter("propertyId"));
 
-            // DAO signature: updatePropertyStatus(int propertyId, String status)
-            // No adminId parameter exists in the DAO.
             if ("approveProperty".equals(action)) {
                 dao.updatePropertyStatus(propertyId, "APPROVED");
             } else if ("rejectProperty".equals(action)) {
