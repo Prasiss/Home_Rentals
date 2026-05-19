@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+/* ================= GLOBAL ================= */
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f6f7fb;
+  color: #222;
+}
+
+
+/* ================= PAGE WRAPPER ================= */
+
+.register-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ================= MAIN CARD ================= */
+
+.register {
+  display: flex;
+  width: 850px;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= LEFT FORM ================= */
+
+.register-form {
+  flex: 1;
+  padding: 30px 28px;
+}
+
+.register-section h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ================= ERROR ================= */
+
+.register-error {
+  color: #dc3545;
+  background: #f8d7da;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* ================= PHOTO PICKER ================= */
+
+.photo-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.photo-picker input {
+  display: none;
+}
+
+.photo-circle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #441AA0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  border: 3px solid #eee;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.photo-circle:hover {
+  transform: scale(1.05);
+}
+
+.photo-pick-label {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #441AA0;
+  cursor: pointer;
+  padding: 5px 12px;
+  border: 1px solid #441AA0;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.photo-pick-label:hover {
+  background: #441AA0;
+  color: #fff;
+}
+
+/* ================= INPUT FIELDS ================= */
+
+.field {
+  display: flex;
+  align-items: center;
+  background: #f7f7f7;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.field:hover {
+  background: #ececec;
+}
+
+.field i {
+  margin-right: 10px;
+  color: #777;
+  font-size: 14px;
+}
+
+.field input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 14px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn-register {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  background: #441AA0;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 5px;
+}
+
+.btn-register:hover {
+  transform: translateY(-2px);
+  background: #3a1485;
+}
+
+/* ================= LOGIN LINK ================= */
+
+.login-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.login-link a {
+  color: #441AA0;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ================= RIGHT IMAGE (FIXED) ================= */
+
+.register-illustration {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+  background: #fafafa;
+}
+
+.register-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .register {
+    flex-direction: column;
+  }
+
+  .register-form {
+    padding: 25px;
+  }
+
+  .register-illustration {
+    height: 220px;
+  }
+}
