@@ -79,6 +79,10 @@ public class AdminProfileServlet extends HttpServlet {
 
             try {
                 String image = handleImageUpload(request);
+                if (image == null) {
+                    UserModel existing = dao.getUserById(userId);
+                    if (existing != null) image = existing.getProfileImage();
+                }
                 dao.updateAdminProfile(userId, fullName, email, phone, image);
                 forwardToProfile(request, response, userId, "Profile updated successfully.", null);
             } catch (Exception e) {
@@ -132,10 +136,9 @@ public class AdminProfileServlet extends HttpServlet {
         Part filePart = request.getPart("profileImage");
         if (filePart == null || filePart.getSize() == 0) return null;
 
-
+        
         String uploadPath = System.getProperty("user.home")
-                + File.separator + "homerental_images"
-                + File.separator + "profiles";
+                + File.separator + "profile";
         new File(uploadPath).mkdirs();
 
         String contentType = filePart.getContentType();
@@ -145,12 +148,12 @@ public class AdminProfileServlet extends HttpServlet {
             else if (contentType.contains("gif"))  ext = ".gif";
             else if (contentType.contains("webp")) ext = ".webp";
         }
-
-        String name = UUID.randomUUID().toString() + ext;
+        String uuid = UUID.randomUUID().toString();
+        String fileName = uuid + ext;
         try (InputStream input = filePart.getInputStream()) {
-            Files.copy(input, new File(uploadPath, name).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(input, new File(uploadPath, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
         }
-        return name;
+        return uuid; 
     }
 
     private String trim(String s) { return s == null ? "" : s.trim(); }

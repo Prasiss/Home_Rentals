@@ -67,6 +67,8 @@ public class AdminPropertyServlet extends HttpServlet {
         try {
             int propertyId = Integer.parseInt(request.getParameter("propertyId"));
 
+            // DAO signature: updatePropertyStatus(int propertyId, String status)
+            // No adminId parameter exists in the DAO.
             if ("approveProperty".equals(action)) {
                 dao.updatePropertyStatus(propertyId, "APPROVED");
             } else if ("rejectProperty".equals(action)) {

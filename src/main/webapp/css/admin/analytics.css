@@ -6,6 +6,49 @@
     --warn-bg: #fff3cd;
 }
 
+/* ── Download toolbar ── */
+.an-download-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0eef8;
+    border: 1px solid #c5bde0;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.an-download-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b5b95;
+    margin-right: 4px;
+}
+
+.an-btn-download {
+    display: inline-block;
+    padding: 7px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s, transform 0.1s;
+}
+.an-btn-download:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.an-btn-csv {
+    background: #28a745;
+    color: #fff;
+}
+.an-btn-pdf {
+    background: #6b5b95;
+    color: #fff;
+}
+
 /* ── KPI grid — 7 cards ── */
 .an-grid-7 {
     grid-template-columns: repeat(7, 1fr);
