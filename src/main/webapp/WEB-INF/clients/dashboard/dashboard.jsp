@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - HomeRentals</title>
+    <title>Dashboard - HomeRental</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userdashboard.css">
 </head>
 <body>
-<jsp:include page="/pages/includes/sidebar.jsp"/>
+<jsp:include page="/WEB-INF/pages/client/dashboard/sidebar.jsp"/>
 <div class="main-content">
-    <jsp:include page="/pages/includes/header.jsp"/>
+    <jsp:include page="/WEB-INF/pages/client/dashboard/header.jsp"/>
 
     <div class="welcome-banner">
         <h1>Welcome back, ${user.fullName}</h1>
@@ -42,12 +42,12 @@
     </div>
 
     <div class="quick-actions">
-        <a href="${pageContext.request.contextPath}/explore" class="btn btn-primary">Explore Properties</a>
+        <a href="${pageContext.request.contextPath}/home" class="btn btn-primary">Explore Properties</a>
         <a href="${pageContext.request.contextPath}/bookings" class="btn btn-primary">My Bookings</a>
         <a href="${pageContext.request.contextPath}/wishlist" class="btn btn-primary">Wishlist</a>
     </div>
 
-    <jsp:include page="/pages/includes/footer.jsp"/>
+    <jsp:include page="/WEB-INF/pages/client/dashboard/footer.jsp"/>
 </div>
 </body>
 </html>

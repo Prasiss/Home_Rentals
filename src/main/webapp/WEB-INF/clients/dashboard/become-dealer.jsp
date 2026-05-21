@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Become a Dealer - HomeRentals</title>
+    <title>Become a Dealer - HomeRental</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/userdashboard.css">
     <style>
@@ -17,9 +17,9 @@
     </style>
 </head>
 <body>
-<jsp:include page="/pages/includes/sidebar.jsp"/>
+<jsp:include page="/WEB-INF/pages/client/dashboard/sidebar.jsp"/>
 <div class="main-content">
-    <jsp:include page="/pages/includes/header.jsp"/>
+    <jsp:include page="/WEB-INF/pages/client/dashboard/header.jsp"/>
 
     <div class="dealer-form-wrapper">
         <a href="${pageContext.request.contextPath}/dashboard" style="color:#6b5b95;text-decoration:none;">← Back to Dashboard</a>
@@ -49,7 +49,7 @@
                             Your previous request was rejected. You may submit a new application below.
                         </div>
                     </c:if>
-                    <form method="post" action="${pageContext.request.contextPath}/become-dealer">
+                    <form method="post" action="${pageContext.request.contextPath}/dealerapplication">
                         <div class="section-label">Business Details</div>
 
                         <div class="form-group">
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <jsp:include page="/pages/includes/footer.jsp"/>
+    <jsp:include page="/WEB-INF/pages/client/dashboard/footer.jsp"/>
 </div>
 </body>
 </html>
