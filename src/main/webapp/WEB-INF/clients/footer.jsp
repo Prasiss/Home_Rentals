@@ -1,0 +1,1 @@
+<div class="footer"><p>&copy; 2026 HomeRental. All rights reserved.</p></div>
