@@ -1,209 +1,184 @@
 @charset "UTF-8";
 
-/* ================= FOOTER ================= */
-
 footer {
-    background: linear-gradient(135deg, #cfd3ea 0%, #c4c9e3 100%);
-    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #cfd3ea 0%, #c4c9e3 100%);
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
-    margin-bottom:0px;
+  margin-bottom: 0px;
 }
-
-/* ================= TOP ================= */
 
 .footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    flex-wrap: wrap;
-    padding: 55px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 55px 70px;
 }
-
-/* ================= COMMON COLUMN ================= */
 
 .footer-brand,
 .footer-links,
 .footer-contact {
-    flex: 1;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
 }
-
-/* ================= BRAND ================= */
-
 .footer-image {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
 .footer-image img {
-    width: 90px;
-    display: block;
-    transition: 0.3s ease;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  width: 90px;
+  display: block;
+  transition: 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .footer-image img:hover {
-    transform: scale(1.06);
+  transform: scale(1.06);
 }
 
 .footer-brand h2 {
-    font-size: 28px;
-    color: #2f2f52;
-    margin-bottom: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  font-size: 28px;
+  color: #2f2f52;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-/* ================= SOCIAL ================= */
-
 .footer-social {
-    display: flex;
-    gap: 14px;
-    margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
 }
 
 .footer-social a {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #5c53a5;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    text-decoration: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5c53a5;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
 }
 
 .footer-social a:hover {
-    background: #6c5fc7;
-    color: white;
-    transform: translateY(-3px);
+  background: #6c5fc7;
+  color: white;
+  transform: translateY(-3px);
 }
-
-/* ================= HEADINGS ================= */
-
 .footer-links h4,
 .footer-contact h4 {
-    font-size: 18px;
-    color: #2f2f52;
-    margin-bottom: 22px;
-    font-weight: 700;
-    position: relative;
+  font-size: 18px;
+  color: #2f2f52;
+  margin-bottom: 22px;
+  font-weight: 700;
+  position: relative;
 }
 
 .footer-links h4::after,
 .footer-contact h4::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 40px;
-    height: 3px;
-    background: #6c5fc7;
-    border-radius: 10px;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 3px;
+  background: #6c5fc7;
+  border-radius: 10px;
 }
 
-/* ================= LINKS ================= */
-
 .footer-links a {
-    display: block;
-    margin-bottom: 14px;
-    color: #4b4f6b;
-    font-size: 15px;
-    font-weight: 500;
-    transition: 0.3s ease;
-    text-decoration: none;
+  display: block;
+  margin-bottom: 14px;
+  color: #4b4f6b;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
-    color: #6c5fc7;
-    transform: translateX(4px);
+  color: #6c5fc7;
+  transform: translateX(4px);
 }
 
-/* ================= CONTACT ================= */
-
 .footer-contact p {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-    color: #4b4f6b;
-    font-size: 15px;
-    line-height: 1.7;
-    font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #4b4f6b;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
 .footer-contact i {
-    color: #6c5fc7;
-    font-size: 16px;
-    min-width: 18px;
+  color: #6c5fc7;
+  font-size: 16px;
+  min-width: 18px;
 }
 
 .footer-contact a {
-    color: #4b4f6b;
-    text-decoration: none;
-    transition: 0.3s ease;
+  color: #4b4f6b;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 
 .footer-contact a:hover {
-    color: #6c5fc7;
+  color: #6c5fc7;
 }
 
-/* ================= BOTTOM ================= */
-
 .footer-bottom {
-    border-top: 1px solid rgba(108, 95, 199, 0.15);
-    padding: 20px;
-    text-align: center;
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(108, 95, 199, 0.15);
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
 }
 
 .footer-bottom p {
-    color: #44486a;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
+  color: #44486a;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
 }
-
-/* ================= RESPONSIVE ================= */
-
 @media (max-width: 900px) {
+  .footer-top {
+    flex-direction: column;
+    padding: 45px 30px;
+    gap: 40px;
+  }
 
-    .footer-top {
-        flex-direction: column;
-        padding: 45px 30px;
-        gap: 40px;
-    }
-
-    .footer-brand h2 {
-        font-size: 24px;
-    }
+  .footer-brand h2 {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 500px) {
+  .footer-top {
+    padding: 35px 20px;
+  }
 
-    .footer-top {
-        padding: 35px 20px;
-    }
+  .footer-brand h2 {
+    font-size: 22px;
+  }
 
-    .footer-brand h2 {
-        font-size: 22px;
-    }
+  .footer-links a,
+  .footer-contact p {
+    font-size: 14px;
+  }
 
-    .footer-links a,
-    .footer-contact p {
-        font-size: 14px;
-    }
-
-    .footer-social a {
-        width: 36px;
-        height: 36px;
-    }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+  }
 }

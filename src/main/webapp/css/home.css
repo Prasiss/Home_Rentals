@@ -1,23 +1,14 @@
 @charset "UTF-8";
-
-/* ================= RESET ================= */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* ================= MAIN LAYOUT ================= */
-
 main {
   padding: 0;
   background: #f5f6fa;
 }
-
-/* ================= HERO (NEW SUPPORT) ================= */
-
 .hero {
   height: 70vh;
   width: 100%;
@@ -41,7 +32,7 @@ main {
   position: absolute;
   inset: 0;
 
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
@@ -81,7 +72,7 @@ main {
 
   border-radius: 30px;
 
-  box-shadow: 0 10px 25px rgba(108,95,199,0.4);
+  box-shadow: 0 10px 25px rgba(108, 95, 199, 0.4);
 
   transition: 0.3s ease;
 }
@@ -91,27 +82,23 @@ main {
   transform: translateY(-3px);
 }
 
-/* HERO SLIDER */
 @keyframes bgSlider {
-
   0% {
-    background-image: url('../image/home.png');
+    background-image: url("../image/home.png");
   }
 
   33% {
-    background-image: url('../image/2BHKImage.jpeg');
+    background-image: url("../image/2BHKImage.jpeg");
   }
 
   66% {
-    background-image: url('../image/bunglow.jpg');
+    background-image: url("../image/bunglow.jpg");
   }
 
   100% {
-    background-image: url('../image/2BHKImage.jpeg');
+    background-image: url("../image/2BHKImage.jpeg");
   }
 }
-
-/* ================= PAGE WRAP ================= */
 
 .layout {
   display: grid;
@@ -122,16 +109,12 @@ main {
   padding: 40px;
 }
 
-/* ================= HEADINGS ================= */
-
 h2 {
   margin: 25px 0;
   font-size: 26px;
   font-weight: 800;
   color: #2f2f52;
 }
-
-/* ================= CARDS GRID ================= */
 
 .cards {
   display: grid;
@@ -143,31 +126,27 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* ================= CARD DESIGN ================= */
-
 .card {
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
 
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
 
   transition: all 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
 }
 
-/* IMAGE */
 .card img {
   width: 100%;
   height: 190px;
   object-fit: cover;
 }
 
-/* CARD CONTENT */
 .card-body {
   padding: 15px 16px;
 }
@@ -185,20 +164,16 @@ h2 {
   margin: 5px 0;
 }
 
-/* STARS */
 .stars {
   color: #f5b301;
   margin: 6px 0;
 }
 
-/* DESCRIPTION */
 .desc {
   font-size: 12.5px;
   color: #777;
   line-height: 1.5;
 }
-
-/* ================= BUTTONS INSIDE CARD ================= */
 
 .card-actions {
   display: flex;
@@ -222,7 +197,6 @@ h2 {
   transition: 0.3s ease;
 }
 
-/* BOOK NOW */
 .cart-btn {
   background: #6c5fc7;
   color: white;
@@ -232,7 +206,6 @@ h2 {
   background: #4b3fb3;
 }
 
-/* WISHLIST */
 .wishlist-btn {
   background: #f3f2ff;
   color: #6c5fc7;
@@ -242,9 +215,6 @@ h2 {
   background: #6c5fc7;
   color: white;
 }
-
-/* ================= SIDEBAR ================= */
-
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -260,7 +230,7 @@ h2 {
   border-radius: 12px;
   overflow: hidden;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .sidebar-card img {
@@ -269,10 +239,7 @@ h2 {
   object-fit: cover;
 }
 
-/* ================= RESPONSIVE ================= */
-
 @media (max-width: 900px) {
-
   .layout {
     grid-template-columns: 1fr;
     padding: 25px;
@@ -292,7 +259,6 @@ h2 {
 }
 
 @media (max-width: 600px) {
-
   .hero {
     height: 70vh;
   }

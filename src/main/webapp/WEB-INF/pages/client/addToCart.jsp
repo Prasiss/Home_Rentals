@@ -29,7 +29,7 @@
 
                 </div>
 
-                <!-- Calculate total -->
+
                 <c:set var="total" value="${total + home.price}" />
 
             </c:forEach>

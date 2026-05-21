@@ -17,7 +17,6 @@
 
             <c:if test="${not empty sessionScope.cart}">
 
-                <!-- Order Summary -->
                 <h3>Order Summary</h3>
 
                 <c:forEach var="item" items="${sessionScope.cart}">
@@ -32,7 +31,7 @@
 
                 <hr>
 
-                <!-- Pricing -->
+
                 <c:set var="discount" value="0" />
 
                 <c:if test="${total > 20000000}">
@@ -45,7 +44,6 @@
 
                 <br>
 
-                <!-- Customer Info Form -->
                 <h3>Billing Details</h3>
 
                 <form action="placeOrder" method="post">
@@ -62,7 +60,7 @@
                     <label>Address:</label><br>
                     <textarea name="address" required></textarea><br><br>
 
-                    <!-- Hidden values -->
+
                     <input type="hidden" name="total" value="${total}">
                     <input type="hidden" name="discount" value="${discount}">
                     <input type="hidden" name="finalAmount" value="${total - discount}">

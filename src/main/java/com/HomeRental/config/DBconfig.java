@@ -1,4 +1,4 @@
-package com.HomeRentals.config;
+package com.HomeRental.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

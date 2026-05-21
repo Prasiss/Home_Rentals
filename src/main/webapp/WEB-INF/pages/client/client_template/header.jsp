@@ -13,7 +13,7 @@
  href="${pageContext.request.contextPath}/css/header.css">
 <header>
 
-    <!-- LOGO -->
+
     <div class="logo">
         <a href="${pageContext.request.contextPath}/home">
             <img src="${pageContext.request.contextPath}/image/site-logo.png"
@@ -21,11 +21,11 @@
         </a>
     </div>
 
-    <!-- NAV -->
+
     <nav>
         <div class="navigation">
         <div class="nav-left"></div>
-            <!-- RIGHT NAV -->
+
             <div class="nav-right">
             <a href="${pageContext.request.contextPath}/search"
                    class="icon-link">

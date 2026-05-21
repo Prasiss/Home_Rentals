@@ -5,7 +5,7 @@
  <%@include file="../client/client_template/header.jsp"%>
       <section class="register-section">
         <div class="register">
-          <!-- FORM -->
+
           <form class="register-form" action="${pageContext.request.contextPath}/register" method="post">
             <h2>REGISTER</h2>
             <c:if test="${not empty error}">
@@ -51,7 +51,7 @@
             </div>
           </form>
 
-          <!-- IMAGE -->
+
           <div class="register-illustration">
             <img src="${pageContext.request.contextPath}/image/login-image.jpg" />
           </div>

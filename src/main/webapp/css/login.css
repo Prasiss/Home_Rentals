@@ -1,15 +1,10 @@
 @charset "UTF-8";
-
-/* ================= GLOBAL ================= */
-
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #f6f7fb;
   color: #222;
 }
-
-/* ================= PAGE WRAPPER ================= */
 
 .login-section {
   display: flex;
@@ -18,8 +13,6 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
-
-/* ================= MAIN CARD ================= */
 
 .login-container {
   display: flex;
@@ -30,8 +23,6 @@ body {
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
-
-/* ================= LEFT FORM ================= */
 
 .login-form {
   flex: 1;
@@ -45,13 +36,9 @@ body {
   color: #333;
 }
 
-/* ================= ERROR ================= */
-
 .login-form p {
   font-size: 13px;
 }
-
-/* ================= INPUT FIELDS ================= */
 
 .field {
   display: flex;
@@ -81,13 +68,11 @@ body {
   font-size: 14px;
 }
 
-/* ================= BUTTON ================= */
-
 .btn-login {
   width: 100%;
   padding: 11px;
   border: none;
-  background: #441AA0;
+  background: #441aa0;
   color: white;
   border-radius: 10px;
   font-weight: 600;
@@ -101,8 +86,6 @@ body {
   background: #3a1485;
 }
 
-/* ================= REGISTER LINK ================= */
-
 .register-link {
   text-align: center;
   margin-top: 15px;
@@ -110,7 +93,7 @@ body {
 }
 
 .register-link a {
-  color: #441AA0;
+  color: #441aa0;
   text-decoration: none;
   font-weight: bold;
 }
@@ -118,8 +101,6 @@ body {
 .register-link a:hover {
   text-decoration: underline;
 }
-
-/* ================= RIGHT IMAGE ================= */
 
 .login-illustration {
   flex: 1;
@@ -137,7 +118,6 @@ body {
   display: block;
 }
 
-/* ================= RESPONSIVE ================= */
 .alert {
   display: flex;
   align-items: center;
@@ -152,19 +132,16 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
-/* ERROR STYLE */
 .alert.error {
   background: #ffe5e5;
   color: #d93025;
   border: 1px solid #ffb3b3;
 }
 
-/* ICON */
 .alert i {
   font-size: 14px;
 }
 
-/* ANIMATION */
 @keyframes fadeIn {
   from {
     opacity: 0;
